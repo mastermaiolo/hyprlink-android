@@ -4,7 +4,7 @@
   <img src="assets/readme/hero.svg" width="100%" alt="HyprLink for Android — signed APK releases">
 </p>
 
-<p align="center"><sub><strong>ANDROID 13+ · SIGNED APK · SHA-256 · APKSIGNER · CN=MAGGIO</strong></sub></p>
+<p align="center"><sub><strong>ANDROID 13+ · SOURCE CODE · SIGNED APK · SHA-256 · APKSIGNER · CN=MAGGIO</strong></sub></p>
 
 <p align="center">
   🇬🇧 <strong>English (UK)</strong>
@@ -14,9 +14,9 @@
   · <a href="README.zh-cn.md">🇨🇳 简体中文</a>
 </p>
 
-> This repository hosts the official release builds (APK packages) of the **HyprLink** Android companion app.
+> This repository hosts the full source code and official release builds (signed APK packages) of the **HyprLink** Android app.
 
-The full source code of the Android application, the Linux Hyprland daemon, CLI and desktop GUI lives in the main repository:
+The Linux Hyprland daemon, CLI, desktop GUI and protocol specifications live in the core repository:
 👉 **[mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)**
 
 ---
@@ -25,7 +25,7 @@ The full source code of the Android application, the Linux Hyprland daemon, CLI 
 
 | | |
 |---|---|
-| **What** | Signed APK builds of the HyprLink phone app |
+| **What** | Android companion app source code and signed release APKs |
 | **Pairs with** | The HyprLink daemon on Linux/Hyprland, same version |
 | **Minimum Android** | 13 |
 | **Signer** | `CN=Maggio` |
@@ -35,6 +35,13 @@ The full source code of the Android application, the Linux Hyprland daemon, CLI 
 
 ## 02 / INSTALL
 
+### Via Obtainium (Recommended)
+Add this repository directly to [Obtainium](https://github.com/ImranR98/Obtainium) to install and receive automatic updates from official releases:
+```text
+https://github.com/mastermaiolo/hyprlink-android
+```
+
+### Via ADB / Manual Download
 1. Download the `.apk` file and its matching `.sha256` from the [Releases](https://github.com/mastermaiolo/hyprlink-android/releases/latest) page.
    ```bash
    R=mastermaiolo/hyprlink-android
@@ -48,7 +55,15 @@ The full source code of the Android application, the Linux Hyprland daemon, CLI 
 
 ---
 
-## 03 / VERIFICATION
+## 03 / BUILD
+
+The app is built with standard Android Gradle tooling (JDK 21+, Android SDK 33–36).
+For prerequisites and build commands, see [`BUILDING.md`](BUILDING.md).
+Without signing environment variables, `./gradlew assembleRelease` produces a clean unsigned release APK (`hyprlink-*-unsigned.apk`).
+
+---
+
+## 04 / VERIFICATION
 
 To verify the integrity and signature of the release package:
 
@@ -78,7 +93,7 @@ To verify the integrity and signature of the release package:
 
 ---
 
-## 04 / REQUIREMENTS & KNOWN LIMITATIONS
+## 05 / REQUIREMENTS & KNOWN LIMITATIONS
 
 - Android 13 or later; the same version of HyprLink on the PC ([mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)).
 - Since Android 10, an app can only read the clipboard while it is open: text copied on the phone is sent to the PC when you open HyprLink.
@@ -90,15 +105,25 @@ Per-version changes are listed in each [release](https://github.com/mastermaiolo
 
 ---
 
-## 05 / PROVENANCE
+## 06 / HOW IT WAS BUILT
 
-Built and signed by Maggio. Source, protocol and changelog: [mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink).
+This application was developed with continuous AI assistance (initially prototyped in Google AI Studio, then developed and refined with AI coding agents) under the architectural direction, strict specification, and code review of the author (Maggio).
+
+The entire codebase follows native Kotlin and Jetpack Compose patterns, with no third-party hybrid frameworks or telemetry, and is licensed under the GPL-3.0 for open audit and verification.
 
 ---
 
-## 06 / LICENCE
+## 07 / PROVENANCE
 
-**GPL-3.0** — see [`LICENSE`](LICENSE).
+Built and signed by Maggio.
+App source code: this repository; Linux daemon, protocol, and CLI: [mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink).
+Security policy and private vulnerability reporting: [`SECURITY.md`](SECURITY.md).
+
+---
+
+## 08 / LICENCE
+
+**GPL-3.0-or-later** — see [`LICENSE`](LICENSE) and [`THIRD_PARTY.md`](THIRD_PARTY.md).
 
 ---
 

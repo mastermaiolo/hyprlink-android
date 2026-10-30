@@ -4,7 +4,7 @@
   <img src="assets/readme/hero.svg" width="100%" alt="HyprLink para Android — versiones APK firmadas">
 </p>
 
-<p align="center"><sub><strong>ANDROID 13+ · SIGNED APK · SHA-256 · APKSIGNER · CN=MAGGIO</strong></sub></p>
+<p align="center"><sub><strong>ANDROID 13+ · CÓDIGO FUENTE · APK FIRMADO · SHA-256 · APKSIGNER · CN=MAGGIO</strong></sub></p>
 
 <p align="center">
   <a href="README.md">🇬🇧 English (UK)</a>
@@ -14,9 +14,9 @@
   · <a href="README.zh-cn.md">🇨🇳 简体中文</a>
 </p>
 
-> Este repositorio aloja las versiones oficiales listas para instalar (paquetes APK) de la aplicación **HyprLink** para Android.
+> Este repositorio aloja el código fuente completo y las versiones oficiales (paquetes APK firmados) de la aplicación **HyprLink** para Android.
 
-El código fuente completo de la app Android, del daemon Linux para Hyprland y de las herramientas de línea de órdenes y GUI está en el repositorio principal:
+El daemon Linux para Hyprland, la interfaz de línea de órdenes (CLI), la GUI de escritorio y las especificaciones de protocolo están en el repositorio principal:
 👉 **[mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)**
 
 ---
@@ -25,7 +25,7 @@ El código fuente completo de la app Android, del daemon Linux para Hyprland y d
 
 | | |
 |---|---|
-| **Qué** | APK firmados de la app HyprLink para el móvil |
+| **Qué** | Código fuente de la app Android y APKs firmados de lanzamiento |
 | **Se empareja con** | El daemon HyprLink en Linux/Hyprland, misma versión |
 | **Android mínimo** | 13 |
 | **Firmante** | `CN=Maggio` |
@@ -35,6 +35,13 @@ El código fuente completo de la app Android, del daemon Linux para Hyprland y d
 
 ## 02 / INSTALACIÓN
 
+### Mediante Obtainium (Recomendado)
+Añade este repositorio directamente en [Obtainium](https://github.com/ImranR98/Obtainium) para instalar y recibir actualizaciones automáticas de los lanzamientos oficiales:
+```text
+https://github.com/mastermaiolo/hyprlink-android
+```
+
+### Mediante ADB / Descarga Manual
 1. Descarga el archivo `.apk` y su `.sha256` correspondiente desde la página de [Releases](https://github.com/mastermaiolo/hyprlink-android/releases/latest).
    ```bash
    R=mastermaiolo/hyprlink-android
@@ -48,7 +55,15 @@ El código fuente completo de la app Android, del daemon Linux para Hyprland y d
 
 ---
 
-## 03 / VERIFICACIÓN
+## 03 / COMPILAR
+
+La aplicación se compila con las herramientas estándar de Android Gradle (JDK 21+, Android SDK 33–36).
+Para instrucciones completas y requisitos previos, consulta la guía [`BUILDING.md`](BUILDING.md).
+Sin variables de entorno de firma, el comando `./gradlew assembleRelease` genera un APK de release limpio sin firmar (`hyprlink-*-unsigned.apk`).
+
+---
+
+## 04 / VERIFICACIÓN
 
 Para comprobar la integridad y la firma del paquete:
 
@@ -78,7 +93,7 @@ Para comprobar la integridad y la firma del paquete:
 
 ---
 
-## 04 / REQUISITOS Y LIMITACIONES CONOCIDAS
+## 05 / REQUISITOS Y LIMITACIONES CONOCIDAS
 
 - Android 13 o superior; la misma versión de HyprLink en el PC ([mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)).
 - Desde Android 10, una app solo puede leer el portapapeles mientras está abierta: el texto copiado en el móvil se envía al PC al abrir HyprLink.
@@ -90,15 +105,25 @@ Los cambios de cada versión figuran en cada [release](https://github.com/master
 
 ---
 
-## 05 / PROCEDENCIA
+## 06 / CÓMO SE HIZO
 
-Compilado y firmado por Maggio. Código fuente, protocolo y changelog: [mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink).
+Esta aplicación fue desarrollada con asistencia continua de inteligencia artificial (iniciada como prototipo en Google AI Studio y posteriormente desarrollada y refinada junto con agentes de IA), bajo la dirección arquitectónica, especificación rigurosa y revisión de código del autor (Maggio).
+
+Todo el código sigue patrones nativos de Kotlin y Jetpack Compose, sin frameworks híbridos ni telemetría, y se encuentra bajo licencia GPL-3.0 para total transparencia y auditoría abierta.
 
 ---
 
-## 06 / LICENCIA
+## 07 / PROCEDENCIA
 
-**GPL-3.0** — véase [`LICENSE`](LICENSE).
+Compilado y firmado por Maggio.
+Código fuente de la app: este repositorio; daemon Linux, protocolo y CLI: [mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink).
+Política de seguridad y reporte privado de vulnerabilidades: [`SECURITY.md`](SECURITY.md).
+
+---
+
+## 08 / LICENCIA
+
+**GPL-3.0-or-later** — véase [`LICENSE`](LICENSE) y [`THIRD_PARTY.md`](THIRD_PARTY.md).
 
 ---
 

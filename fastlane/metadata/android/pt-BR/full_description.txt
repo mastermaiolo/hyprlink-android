@@ -1,0 +1,11 @@
+O HyprLink conecta seu dispositivo Android à sua estação de trabalho Linux com Hyprland, oferecendo integração fluida, rápida e segura na rede local.
+
+Todas as comunicações utilizam o protocolo QUIC com autenticação mTLS (certificados X.509 gerados localmente e pareamento via código QR), sem depender de servidores na nuvem ou serviços proprietários.
+
+Principais recursos:
+- Áudio Bidirecional: Ouça o áudio do PC no celular e controle o volume e a reprodução de mídia diretamente na tela.
+- Webcam e Microfone: Use as câmeras e o microfone do celular no seu computador Linux com baixa latência.
+- Compartilhamento e Sincronização: Transfira fotos, textos e capturas de tela automaticamente para pastas organizadas no PC.
+- Controle Remoto e Atalhos: Touchpad virtual, bloqueio de tela, suspensão e atalhos personalizados do Hyprland acessíveis pelos blocos de configurações rápidas (Quick Settings Tiles).
+- Localizar Celular: Dispare um alerta sonoro a partir do computador quando precisar encontrar o aparelho.
+- Privacidade Total: Sem criação de contas, sem telemetria e sem servidores externos.

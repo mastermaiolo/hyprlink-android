@@ -1,0 +1,1 @@
+Conecta Android con Linux Hyprland: audio, cámara, archivos y atajos vía QUIC.

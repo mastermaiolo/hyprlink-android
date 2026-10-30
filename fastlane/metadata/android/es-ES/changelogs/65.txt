@@ -1,0 +1,4 @@
+Versión 0.1.3:
+- Organización de archivos en el PC: las capturas se guardan en la carpeta de capturas y los archivos en descargas.
+- Modernización y limpieza de APIs de Android (SDK 33 a 36).
+- Mejoras en la robustez de las conexiones QUIC/mTLS y cierre limpio de flujos.

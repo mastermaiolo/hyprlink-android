@@ -1,0 +1,23 @@
+*.iml
+.gradle/
+.kotlin/
+build/
+/app/build/
+.idea/
+.DS_Store
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+.env
+
+# Chaves e assinaturas
+*.jks
+*.keystore
+
+# Binários gerados
+*.apk
+*.aab
+
+# Proguard / R8 mappings
+mapping*

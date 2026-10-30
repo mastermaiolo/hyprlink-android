@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- «L»: haste e pé -->
+    <path android:fillColor="#EDEBE4" android:pathData="M29,27H39.8V81H29Z"/>
+    <path android:fillColor="#EDEBE4" android:pathData="M29,70.2H60.1V81H29Z"/>
+    <!-- cursor de estado -->
+    <path android:fillColor="#2BE07A" android:pathData="M65.5,51.3H79V81H65.5Z"/>
+</vector>

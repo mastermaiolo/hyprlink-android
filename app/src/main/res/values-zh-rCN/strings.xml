@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HyprLink</string>
+    <string name="nav_home">主页</string>
+    <string name="nav_media">媒体</string>
+    <string name="nav_mouse">键鼠</string>
+    <string name="nav_actions">动作</string>
+    <string name="nav_files">文件</string>
+    <string name="nav_settings">设置</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HyprLink</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_media">Media</string>
+    <string name="nav_mouse">Mouse</string>
+    <string name="nav_actions">Actions</string>
+    <string name="nav_files">Files</string>
+    <string name="nav_settings">Settings</string>
+</resources>

@@ -30,7 +30,7 @@ kwik = "0.10.9"
 bouncycastle = "1.78.1"
 cborJava = "0.9"
 securityCrypto = "1.1.0-alpha06"
-mlkitBarcodeScanning = "17.3.0"
+zxing = "3.5.3"
 media = "1.7.0"
 
 [libraries]
@@ -75,7 +75,7 @@ bouncycastle-bcprov = { group = "org.bouncycastle", name = "bcprov-jdk18on", ver
 bouncycastle-bcpkix = { group = "org.bouncycastle", name = "bcpkix-jdk18on", version.ref = "bouncycastle" }
 cbor-java = { group = "co.nstant.in", name = "cbor", version.ref = "cborJava" }
 androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
-mlkit-barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning", version.ref = "mlkitBarcodeScanning" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
 androidx-media = { group = "androidx.media", name = "media", version.ref = "media" }
 
 [plugins]

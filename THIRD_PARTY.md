@@ -11,7 +11,7 @@ Este documento lista as bibliotecas e componentes de terceiros utilizados na apl
 | `org.bouncycastle:bcpkix-jdk18on` | 1.78.1 | Bouncy Castle Licence (permissiva tipo MIT) | Geração e manipulação de certificados PKIX/X.509 |
 | `co.nstant.in:cbor` | 0.9 | Apache-2.0 | Codificação e descodificação binária de mensagens CBOR |
 | `androidx.security:security-crypto` | 1.1.0-alpha06 | Apache-2.0 | Armazenamento cifrado seguro de chaves de identidade (EncryptedSharedPreferences) |
-| `com.google.mlkit:barcode-scanning` | 17.3.0 | Apache-2.0 (com componentes GMS / modelo local) | Leitura ótica do código QR de emparelhamento com o PC |
+| `com.google.zxing:core` | 3.5.3 | Apache-2.0 | Leitura e descodificação de códigos QR de emparelhamento com o PC (puro Java, sem GMS nem binários proprietários) |
 | `androidx.media:media` | 1.7.0 | Apache-2.0 | Integração com controlos multimédia e notificações de reprodução |
 
 ## AndroidX e Jetpack Compose

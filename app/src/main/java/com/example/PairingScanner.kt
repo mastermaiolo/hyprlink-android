@@ -16,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
-import com.google.mlkit.vision.barcode.BarcodeScannerOptions
-import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.google.mlkit.vision.barcode.common.Barcode
-import com.google.mlkit.vision.common.InputImage
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.DecodeHintType
+import com.google.zxing.NotFoundException
+import com.google.zxing.PlanarYUVLuminanceSource
+import com.google.zxing.common.HybridBinarizer
+import com.google.zxing.qrcode.QRCodeReader
 import co.nstant.`in`.cbor.CborBuilder
 import co.nstant.`in`.cbor.CborEncoder
 import co.nstant.`in`.cbor.CborDecoder
@@ -135,39 +137,125 @@ fun hexToBytes(hex: String): ByteArray {
     return data
 }
 
-// --- ML Kit QR Code Analyzer for CameraX ---
-@androidx.annotation.OptIn(ExperimentalGetImage::class)
+// --- Função pura de decodificação QR a partir de buffer luma (YUV Y plane) ---
+fun decodeQrFromLuma(
+    luma: ByteArray,
+    rowStride: Int,
+    width: Int,
+    height: Int,
+    rotationDegrees: Int
+): String? {
+    if (width <= 0 || height <= 0 || luma.isEmpty()) return null
+
+    val normalizedRotation = ((rotationDegrees % 360) + 360) % 360
+    val targetLuma: ByteArray
+    val dataWidth: Int
+    val dataHeight: Int
+
+    when (normalizedRotation) {
+        90 -> {
+            dataWidth = height
+            dataHeight = width
+            targetLuma = ByteArray(dataWidth * dataHeight)
+            for (y in 0 until height) {
+                val rowOffset = y * rowStride
+                for (x in 0 until width) {
+                    targetLuma[x * height + (height - 1 - y)] = luma[rowOffset + x]
+                }
+            }
+        }
+        180 -> {
+            dataWidth = width
+            dataHeight = height
+            targetLuma = ByteArray(dataWidth * dataHeight)
+            for (y in 0 until height) {
+                val rowOffset = y * rowStride
+                val targetRowOffset = (height - 1 - y) * width
+                for (x in 0 until width) {
+                    targetLuma[targetRowOffset + (width - 1 - x)] = luma[rowOffset + x]
+                }
+            }
+        }
+        270 -> {
+            dataWidth = height
+            dataHeight = width
+            targetLuma = ByteArray(dataWidth * dataHeight)
+            for (y in 0 until height) {
+                val rowOffset = y * rowStride
+                for (x in 0 until width) {
+                    targetLuma[(width - 1 - x) * height + y] = luma[rowOffset + x]
+                }
+            }
+        }
+        else -> {
+            targetLuma = luma
+            dataWidth = rowStride
+            dataHeight = height
+        }
+    }
+
+    val targetWidth = if (normalizedRotation == 90 || normalizedRotation == 270) height else width
+    val targetHeight = if (normalizedRotation == 90 || normalizedRotation == 270) width else height
+
+    val source = PlanarYUVLuminanceSource(
+        targetLuma,
+        dataWidth,
+        dataHeight,
+        0,
+        0,
+        targetWidth,
+        targetHeight,
+        false
+    )
+
+    val reader = QRCodeReader()
+    val hints = mapOf(DecodeHintType.TRY_HARDER to true)
+
+    try {
+        val bitmap = BinaryBitmap(HybridBinarizer(source))
+        return reader.decode(bitmap, hints).text
+    } catch (_: NotFoundException) {
+        try {
+            val invertedBitmap = BinaryBitmap(HybridBinarizer(source.invert()))
+            return reader.decode(invertedBitmap, hints).text
+        } catch (_: Exception) {
+            return null
+        }
+    } catch (_: Exception) {
+        return null
+    }
+}
+
+// --- ZXing QR Code Analyzer for CameraX ---
 class QrCodeAnalyzer(
     private val onQrCodeScanned: (String) -> Unit
 ) : ImageAnalysis.Analyzer {
-    
-    private val scanner = BarcodeScanning.getClient(
-        BarcodeScannerOptions.Builder()
-            .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
-            .build()
-    )
 
     override fun analyze(imageProxy: ImageProxy) {
-        val mediaImage = imageProxy.image
-        if (mediaImage != null) {
-            val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
-            scanner.process(image)
-                .addOnSuccessListener { barcodes ->
-                    for (barcode in barcodes) {
-                        val rawValue = barcode.rawValue
-                        if (rawValue != null) {
-                            onQrCodeScanned(rawValue)
-                            break
-                        }
-                    }
+        try {
+            val planes = imageProxy.planes
+            if (planes.isNotEmpty()) {
+                val yPlane = planes[0]
+                val buffer = yPlane.buffer
+                val remaining = buffer.remaining()
+                val luma = ByteArray(remaining)
+                buffer.get(luma)
+
+                val result = decodeQrFromLuma(
+                    luma = luma,
+                    rowStride = yPlane.rowStride,
+                    width = imageProxy.width,
+                    height = imageProxy.height,
+                    rotationDegrees = imageProxy.imageInfo.rotationDegrees
+                )
+
+                if (result != null) {
+                    onQrCodeScanned(result)
                 }
-                .addOnFailureListener {
-                    // Fail silently
-                }
-                .addOnCompleteListener {
-                    imageProxy.close()
-                }
-        } else {
+            }
+        } catch (_: Exception) {
+            // Ignorar exceções transitórias de frame
+        } finally {
             imageProxy.close()
         }
     }

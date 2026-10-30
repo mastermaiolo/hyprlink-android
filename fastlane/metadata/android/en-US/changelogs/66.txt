@@ -1,0 +1,6 @@
+Version 0.1.4:
+- First release with full public source code on GitHub (GPL-3.0-or-later, SPDX identifiers).
+- Added open build guide (BUILDING.md), security policy (SECURITY.md), and dependency licenses (THIRD_PARTY.md).
+- Support for reproducible unsigned builds for auditability and package maintainers.
+- Cleaned up early prototype remnants and added Fastlane metadata.
+- QR pairing scanner now uses ZXing (no proprietary Google components).

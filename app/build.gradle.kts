@@ -16,8 +16,8 @@ android {
     applicationId = "io.maggio.hyprlink"
     minSdk = 33
     targetSdk = 36
-    versionCode = 65
-    versionName = "0.1.3"
+    versionCode = 66
+    versionName = "0.1.4"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -83,6 +83,10 @@ android {
     compose = true
     buildConfig = true
   }
+  dependenciesInfo {
+    includeInApk = false
+    includeInBundle = false
+  }
   testOptions { unitTests { isIncludeAndroidResources = true } }
 }
 
@@ -117,7 +121,7 @@ dependencies {
   implementation(libs.bouncycastle.bcpkix)
   implementation(libs.cbor.java)
   implementation(libs.androidx.security.crypto)
-  implementation(libs.mlkit.barcode.scanning)
+  implementation(libs.zxing.core)
   implementation(libs.androidx.media)
 
   testImplementation(libs.androidx.compose.ui.test.junit4)

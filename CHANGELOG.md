@@ -3,6 +3,19 @@
 Todas as alterações relevantes da aplicação Android do HyprLink são registadas neste ficheiro.
 O formato baseia-se em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e respeita [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
+## [0.1.4] — 2026-10-30 (versionCode 66)
+
+### Lançamento Público e Governança
+- **Código-fonte totalmente público:** Repositório oficial aberto sob licença GPL-3.0-or-later com identificadores SPDX em todos os ficheiros de código.
+- **Transparência e conformidade de licenças:** Licenças das fontes tipográficas e catálogo completo de dependências em `THIRD_PARTY.md`.
+- **Instruções de construção e segurança:** Guias `BUILDING.md` (compilação reprodutível sem segredos) e `SECURITY.md` (divulgação responsável).
+- **Compilações abertas:** Suporte a `assembleRelease` sem variáveis de assinatura para gerar APKs não assinados para distribuição comunitária e auditoria.
+- **Limpeza de resíduos:** Remoção integral de modelos e ficheiros residuais do AI Studio.
+- **Metadados Fastlane:** Metadados estruturados para 5 línguas (pt-PT, pt-BR, en-US, es-ES, zh-CN) e diretórios para capturas de ecrã.
+
+### Alterado
+- **Leitor de QR do emparelhamento:** o ML Kit foi substituído por ZXing core (Apache-2.0). A app deixa de incluir componentes proprietários da Google (GMS/ML Kit) e o APK deixa de levar o bloco de informação de dependências da Google. O formato do QR e o fluxo de emparelhamento não mudam.
+
 ## [0.1.3] — 2026-10-29 (versionCode 65)
 
 ### Adicionado

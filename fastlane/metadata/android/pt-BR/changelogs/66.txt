@@ -1,0 +1,6 @@
+Versão 0.1.4:
+- Primeira versão com código-fonte público no GitHub (GPL-3.0-or-later, identificadores SPDX).
+- Adicionada documentação aberta de compilação (BUILDING.md), segurança (SECURITY.md) e dependências (THIRD_PARTY.md).
+- Suporte a compilações limpas não assinadas para auditoria e empacotamento comunitário.
+- Remoção de vestígios do protótipo inicial e inclusão de metadados Fastlane.
+- O leitor de QR do pareamento agora usa ZXing (sem componentes proprietários do Google).

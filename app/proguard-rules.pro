@@ -41,11 +41,9 @@
 -keep class com.google.crypto.tink.** { *; }
 -dontwarn com.google.crypto.tink.**
 
-# ML Kit: preserva scanners, registrars de injeção de dependência e JNI nativo
--keep class com.google.mlkit.** { *; }
--keep interface com.google.mlkit.** { *; }
--keep class com.google.android.gms.internal.mlkit_vision_barcode.** { *; }
--dontwarn com.google.mlkit.**
+# ZXing: leitor puro Java de códigos QR (sem dependências nativas nem GMS)
+-keep class com.google.zxing.qrcode.** { *; }
+-dontwarn com.google.zxing.**
 
 # CameraX: classes de ciclo de vida, captura de vídeo/preview para a funcionalidade de webcam.
 -keep class androidx.camera.core.** { *; }

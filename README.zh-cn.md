@@ -4,7 +4,7 @@
   <img src="assets/readme/hero.svg" width="100%" alt="HyprLink Android 版 — 已签名的 APK 发布">
 </p>
 
-<p align="center"><sub><strong>ANDROID 13+ · SIGNED APK · SHA-256 · APKSIGNER · CN=MAGGIO</strong></sub></p>
+<p align="center"><sub><strong>ANDROID 13+ · 完整源码 · 已签名 APK · SHA-256 · APKSIGNER · CN=MAGGIO</strong></sub></p>
 
 <p align="center">
   <a href="README.md">🇬🇧 English (UK)</a>
@@ -14,9 +14,9 @@
   · 🇨🇳 <strong>简体中文</strong>
 </p>
 
-> 本仓库托管 **HyprLink** Android 配套应用的官方发布构建（APK 安装包）。
+> 本仓库托管 **HyprLink** Android 应用的完整源代码及官方发布构建（已签名的 APK 安装包）。
 
-Android 应用、Linux Hyprland 守护进程、命令行工具和桌面 GUI 的完整源代码位于主仓库：
+Linux Hyprland 守护进程、命令行工具（CLI）、桌面 GUI 及协议规范位于主仓库：
 👉 **[mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)**
 
 ---
@@ -25,7 +25,7 @@ Android 应用、Linux Hyprland 守护进程、命令行工具和桌面 GUI 的�
 
 | | |
 |---|---|
-| **内容** | 已签名的 HyprLink 手机应用 APK |
+| **内容** | Android 应用源代码与已签名的发布版 APK |
 | **配对对象** | Linux/Hyprland 上的 HyprLink 守护进程，版本需一致 |
 | **最低 Android 版本** | 13 |
 | **签名者** | `CN=Maggio` |
@@ -35,6 +35,13 @@ Android 应用、Linux Hyprland 守护进程、命令行工具和桌面 GUI 的�
 
 ## 02 / 安装
 
+### 通过 Obtainium 安装（推荐）
+将本仓库直接添加到 [Obtainium](https://github.com/ImranR98/Obtainium)，即可直接获取官方版本并自动接收后续更新：
+```text
+https://github.com/mastermaiolo/hyprlink-android
+```
+
+### 通过 ADB / 手动下载
 1. 从 [Releases](https://github.com/mastermaiolo/hyprlink-android/releases/latest) 页面下载 `.apk` 文件及对应的 `.sha256` 文件。
    ```bash
    R=mastermaiolo/hyprlink-android
@@ -48,7 +55,15 @@ Android 应用、Linux Hyprland 守护进程、命令行工具和桌面 GUI 的�
 
 ---
 
-## 03 / 校验
+## 03 / 构建
+
+本项目使用标准 Android Gradle 工具链构建（需 JDK 21+ 及 Android SDK 33–36）。
+构建前置条件及详细指令请参阅 [`BUILDING.md`](BUILDING.md)。
+在未配置签名环境变量时，执行 `./gradlew assembleRelease` 将生成干净的未签名发布包（`hyprlink-*-unsigned.apk`）。
+
+---
+
+## 04 / 校验
 
 校验发布包的完整性与签名：
 
@@ -78,7 +93,7 @@ Android 应用、Linux Hyprland 守护进程、命令行工具和桌面 GUI 的�
 
 ---
 
-## 04 / 要求与已知限制
+## 05 / 要求与已知限制
 
 - Android 13 或更高版本；PC 端需同版本的 HyprLink（[mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)）。
 - 自 Android 10 起，应用只能在前台时读取剪贴板：手机上复制的文本会在打开 HyprLink 时发送到 PC。
@@ -90,15 +105,25 @@ Android 应用、Linux Hyprland 守护进程、命令行工具和桌面 GUI 的�
 
 ---
 
-## 05 / 来源
+## 06 / 开发背景与实现
 
-由 Maggio 构建并签名。源代码、协议与更新日志：[mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)。
+本应用在作者（Maggio）的架构规划、严格技术规范与代码审查主导下，借助人工智能辅助持续开发（最初在 Google AI Studio 搭建原型，随后由 AI 智能体协助迭代完善）。
+
+全部代码采用原生 Kotlin 与 Jetpack Compose 开发，无任何混合框架与专有遥测代码，并以 GPL-3.0 许可证完全开源，接受社区审查与审计。
 
 ---
 
-## 06 / 许可证
+## 07 / 来源
 
-**GPL-3.0** — 见 [`LICENSE`](LICENSE)。
+由 Maggio 构建并签名。
+Android 应用源码：本仓库；Linux 守护进程、通信协议及 CLI：[mastermaiolo/hyprlink](https://github.com/mastermaiolo/hyprlink)。
+安全策略及漏洞私密汇报渠道：[`SECURITY.md`](SECURITY.md)。
+
+---
+
+## 08 / 许可证
+
+**GPL-3.0-or-later** — 见 [`LICENSE`](LICENSE) 与 [`THIRD_PARTY.md`](THIRD_PARTY.md)。
 
 ---
 

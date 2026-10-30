@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HyprLink</string>
+    <string name="nav_home">Início</string>
+    <string name="nav_media">Média</string>
+    <string name="nav_mouse">Rato</string>
+    <string name="nav_actions">Ações</string>
+    <string name="nav_files">Fich.</string>
+    <string name="nav_settings">Definições</string>
+</resources>

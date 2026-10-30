@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HyprLink</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_media">Media</string>
+    <string name="nav_mouse">Mouse</string>
+    <string name="nav_actions">Actions</string>
+    <string name="nav_files">Files</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="tile_lock_pc">Bloquear PC</string>
+    <string name="tile_suspend_pc">Suspender PC</string>
+    <string name="tile_wake_pc">Acordar PC</string>
+    <string name="tile_custom_shortcut">Atalho do PC</string>
+</resources>

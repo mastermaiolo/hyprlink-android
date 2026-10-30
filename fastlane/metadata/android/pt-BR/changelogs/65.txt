@@ -1,0 +1,4 @@
+Versão 0.1.3:
+- Organização de arquivos no PC: capturas de tela automáticas são salvas na pasta de capturas e arquivos compartilhados na pasta de transferências.
+- Limpeza e modernização de APIs Android (SDK 33 a 36).
+- Melhorias na estabilidade das conexões QUIC/mTLS e encerramento limpo de transmissões.
